@@ -24,31 +24,34 @@ for ($i = 1; $i <= 13; $i++){
 $orderedDeck = array_merge($hearts, $spades, $dimonds, $clubs);
   $shuffledDeck =  shuffle_assoc($orderedDeck);
   $ammountOfCards = getRandom();
-  $numOfPlayers = rand(2, 5);
+  $numOfPlayers = 4;
   $i = 0;
+  $j = 0;
    foreach($shuffledDeck as $x => $x_values) 
    if($j < $numOfPlayers){
-   if($i <= $ammountOfCards ){
-       $i++;
-        if ($x_values < 1) continue;
-        $src = $x;
-        $score += $x_values;
-        $playerScores[$j] = $score;
-       // array_push($score, $score); 
-        echo "<img src = '$src' />";
-        //echo $x_values;
+     if($i <= $ammountOfCards ){
+          $i++;
+           if ($x_values < 1) continue;
+            $src = $x;
+            $score += $x_values;
+            $playerScores[$j] = $score;
+            echo "<img src = '$src' />";
+            //echo $x_values;
    } else{
-       echo "$score"; 
+       echo "score: $score"; 
        echo "<br>";
        $ammountOfCards = getRandom();
        $i = 0;
        $score = 0;
        $j++;
    }};
-   $playerWinner = winner($playerScores);
-   echo "$playerWinner";
-   for ($i = 1; $i <= count($playerScores); $i++) {
+   
+   for ($i = 0; $i <= count($playerScores); $i++) {
         echo $playerScores[$i] .  " ";
+   }
+   $playerWinners = winner($playerScores);
+   for ($i = 0; $i <= count($playerWinners); $i++) {
+       //echo "Winner/s " . $playerWinners[$i];
    }
    /*
 for ($i = 1; $i <= 54; $i++){
@@ -106,10 +109,16 @@ function deal($deck){
 }
 
 function winner($playerScore){
-    for($i; $i < count($playerScore); $i++){
+    $winner = array();
+    $maxScore = 42;
+    for($i = 0; $i < count($playerScore); $i++){
+        
         if($playerScore[$i] < $maxScore)
         {
-            $winner = $playerScore[$i];
+           echo "winners: " . $winner[$i];
+            $winner[0] = $playerScore[$i];
+            if($playScore[$i] == $winner)
+            $winner[1] = $playerScore[$i];
             if($playerScore[$i] > $winner){
                 $winner = $playerScore[$i];
             }
