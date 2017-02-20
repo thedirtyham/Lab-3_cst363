@@ -1,0 +1,71 @@
+body
+{
+    background-color: #b6ffa5;
+}
+
+
+h1
+{
+    
+    font-size: 4em;
+    height: 70px;
+    width: 1020px;
+   margin-right: 70px;  
+   margin-bottom: 70px;
+   text-align: center;
+   margin-top: 20px;
+   border-top-left-radius: 20px;
+   border-bottom-right-radius: 20px;
+   text-shadow: 2px 2px #706f6d;
+}
+            
+
+
+
+img
+{
+    width: 90px;
+    height: 120px;
+    text-align:right;
+}
+text
+{
+    background-color: #e1ffe1;
+    padding-right: 0px;
+    font-size: 30px;
+}
+tr
+{
+    margin-left:200px;
+    text-align: center;   
+}
+table
+{
+    text-align: left;   
+}
+
+input
+{
+    background-color: #f96c01;
+    font-size:40px;
+}
+
+#winner
+{
+    font-size: 500%;
+    color:#f92f01;
+}
+
+
+main
+{
+    border:solid;
+    border-radius:20px;
+    text-align: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-weight: bold;
+    background-image: url("img/Test.jpg");
+    background-position: bottom;
+    background-size: cover;
+}
