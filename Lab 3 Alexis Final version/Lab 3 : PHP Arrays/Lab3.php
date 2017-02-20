@@ -6,6 +6,7 @@
     
         $randSuite = rand(0,3); //random 
         $randIndex = rand(1,13); 
+        
         $randNumber = ($randSuite * 13) + $randIndex; // card value in deck
         
       
@@ -246,8 +247,9 @@ function playAgain()
             
             for ($i = 0; deckSum($tempArr) < 42 ;$i++)
             {
-                if (abs(42 - deckSum($tempArr) < 7))
+                if ( $i== 6)
                 {
+                   
                     break;
                 }
                 displayRandomCard($tempArr,$deck);
