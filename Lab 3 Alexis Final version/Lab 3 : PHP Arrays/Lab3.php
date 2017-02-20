@@ -1,6 +1,6 @@
 <?php
 
-    function displayRandomCard(&$array,&$deck)
+    function displayCard(&$array,&$deck)
     {
         $suits = array("clubs", "diamonds", "spades", "hearts");
     
@@ -10,7 +10,7 @@
         $randNumber = ($randSuite * 13) + $randIndex; // card value in deck
         
       
-        while (sequentialSearch($array,$randNumber) || sequentialSearch($deck,$randNumber))
+        while (seqSearch($array,$randNumber) || seqSearch($deck,$randNumber))
         {
             $randSuite = rand(0,3);
             $randIndex = rand(1,13);
@@ -24,11 +24,11 @@
     }
     
     
-     function getPlayerByRamdomIndex(&$hasBeenDisplayed,&$index){
+     function getPlayerByRamdom(&$hasBeenDisplayed,&$index){
         global $MarioCards,$LuigiCards,$YoshiCards,$PeachCards;
         $players = array($MarioCards,$LuigiCards,$YoshiCards,$PeachCards);
         $randIndex = rand(0,3);
-        while (sequentialSearch($hasBeenDisplayed,$randIndex))
+        while (seqSearch($hasBeenDisplayed,$randIndex))
         {
             $randIndex = rand(0,3);
         }
@@ -37,7 +37,7 @@
         return $players[$randIndex];
     }
     
-    function sequentialSearch($array,$element)
+    function seqSearch($array,$element)
     {
         for ($i = 0; $i < count($array);$i++)
         {
@@ -50,7 +50,7 @@
         return false;
     }
     
-    function getCardValue($card)
+    function getcardValue($card)
     {
     
         // Jack
@@ -78,7 +78,7 @@
     
     
     
-    function getWinningSum($winner,$score1, $score2,$score3,$score4)
+    function getWinneSum($winner,$score1, $score2,$score3,$score4)
     {
         if ($winner[0] == "All Loose !")
         {
@@ -125,14 +125,14 @@
             
             for ($i = 0; $i < count($array);$i++)
             {
-                $sum += getCardValue($array[$i]);
+                $sum += getcardValue($array[$i]);
             }
             
         return $sum;
         }
     }
     
-    function getHighScore($score1, $score2,$score3,$score4)
+    function getbetterScore($score1, $score2,$score3,$score4)
     {
         $scores = array();
         $scores[] = $score1;
@@ -171,7 +171,7 @@
     function getWinners($score1, $score2,$score3,$score4,&$winners)
     {
         
-        $high_score = getHighScore($score1, $score2,$score3,$score4);
+        $high_score = getbetterScore($score1, $score2,$score3,$score4);
         if ($high_score == -1)
         {
             $winners[] = "All loose !";
@@ -241,7 +241,7 @@ function playAgain()
         {
             echo "<table>";
             $tempIndex = 0;
-            $tempArr = getPlayerByRamdomIndex($hasBeenDisplayed,$tempIndex);
+            $tempArr = getPlayerByRamdom($hasBeenDisplayed,$tempIndex);
             echo "<tr><td> <img src='img/$tempArr[0]'/>";
             $scores[$tempIndex] = 0;
             
@@ -252,7 +252,7 @@ function playAgain()
                    
                     break;
                 }
-                displayRandomCard($tempArr,$deck);
+                displayCard($tempArr,$deck);
                 $scores[$tempIndex] = deckSum($tempArr);
               
             }
